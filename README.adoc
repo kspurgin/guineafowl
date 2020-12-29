@@ -1,0 +1,36 @@
+= Guinea fowl
+
+Data and script to generate schedule of early-out-of-the-coop birds, given the following parameters: 
+
+- No more than 1/3 of the flock should be out at one time
+- If `NO_MATES = true` no bird should be let out with its mate(s)
+- Prefer not to let out birds who have been out in the past 2 days
+- *Strong* preference not to let out birds who were out the previous day (though this is sometimes necessary when `NO_MATES = true`
+
+Future:
+
+- Option to ensure a bird will be out with its mate(s)
+- Prefer an even mix of birds from each cohort?
+
+== Files
+
+*Input*
+
+- birds.csv - individual data (sex, cohort, name) for each bird
+- relationships.csv - from which we derive the birds' mates
+
+*Working*
+
+These files are used by the script. To start fresh, you can delete them. To continue a pattern based on "previous days", leave them in place
+
+- full_history.txt
+- recent_history.txt
+
+*Script*
+
+- subgrouper.rb - the script
+
+*Output*
+
+- mate_agnostic.csv - a 31 day schedule that doesn't care about mates (for late fall, winter, early spring)
+- no_mates.csv - a 31 day schedule that keeps mates from being out together (for mating/laying season)
